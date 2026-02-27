@@ -2,10 +2,6 @@ require("dotenv").config();
 const axios = require("axios");
 const fs = require("fs");
 
-console.log("JIRA_BASE_URL:", process.env.JIRA_BASE_URL);
-console.log("JIRA_EMAIL:", process.env.JIRA_EMAIL);
-console.log("JIRA_PROJECT_KEY:", process.env.JIRA_PROJECT_KEY);
-
 const JIRA_BASE_URL = process.env.JIRA_BASE_URL;
 const JIRA_EMAIL = process.env.JIRA_EMAIL;
 const JIRA_API_TOKEN = process.env.JIRA_API_TOKEN;
@@ -31,7 +27,7 @@ async function fetchAllStories() {
   try {
     const url = `${JIRA_BASE_URL.replace(/\/$/, "")}/rest/api/3/search/jql`;
 
-    const jql = `project = ${JIRA_PROJECT_KEY} AND issuetype = Story ORDER BY created DESC`;
+    const jql = `project = ${JIRA_PROJECT_KEY} AND issuetype = Story ORDER BY created ASC`;
 
     console.log("URL:", url);
     console.log("JQL:", jql);
