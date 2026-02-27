@@ -76,5 +76,5 @@ Do not include any markdown formatting, backticks, or introductory text. Output 
 
   fs.writeFileSync("testCases.json", JSON.stringify(allTestCases, null, 2));
 
-  console.log("✅ Test cases generated using Groq AI");
+  console.log("Test cases generated using Groq AI");
 })();
