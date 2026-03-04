@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://smartqa-pe5h.onrender.com/api";
 
 // Redirect user to Jira OAuth
 export const connectJira = () => {

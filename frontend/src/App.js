@@ -36,7 +36,7 @@ function App() {
       setLoading(true);
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/jira/fetch-stories",
+          "https://smartqa-pe5h.onrender.com/api/jira/fetch-stories",
           {
             accessToken: token,
             projectKey: process.env.REACT_APP_JIRA_PROJECT_KEY || "SQ",
@@ -60,7 +60,7 @@ function App() {
       setGenerating(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/jira/generate-testcases",
+        "https://smartqa-pe5h.onrender.com/api/jira/generate-testcases",
         {
           stories,
         },
@@ -85,7 +85,7 @@ function App() {
   const handleExportExcel = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/export/excel",
+        "https://smartqa-pe5h.onrender.com/api/export/excel",
         { testCases },
         { responseType: "blob" },
       );
@@ -104,7 +104,7 @@ function App() {
 
   const handleExportJira = async () => {
     try {
-      await axios.post("http://localhost:5000/api/export/jira", {
+      await axios.post("https://smartqa-pe5h.onrender.com/api/export/jira", {
         accessToken,
         testCases,
         generatedTestCasesField,
@@ -160,7 +160,7 @@ function App() {
 
             {/* CTA BUTTON */}
             <a
-              href="http://localhost:5000/api/oauth/connect"
+              href="https://smartqa-pe5h.onrender.com/api/oauth/connect"
               className="inline-flex items-center gap-2
                      px-8 py-3 bg-blue-600 text-white
                      rounded-xl font-medium shadow-md

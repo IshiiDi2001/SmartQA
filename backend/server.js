@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 app.use("/api/oauth", oauthRoutes);
 app.use("/api", jiraRoutes);
-app.use("/api", require("./routes/exportRoutes"));
+app.use("/api", exportRoutes);
 
 app.get("/", (req, res) => res.send("Backend Running"));
 

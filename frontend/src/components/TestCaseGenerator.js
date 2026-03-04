@@ -8,7 +8,7 @@ const TestCaseGenerator = ({ stories }) => {
     setLoading(true);
     try {
       const response = await fetch(
-        "http://localhost:5000/api/jira/generate-test-cases",
+        "https://smartqa-pe5h.onrender.com/api/jira/generate-test-cases",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
