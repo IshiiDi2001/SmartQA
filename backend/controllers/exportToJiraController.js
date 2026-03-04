@@ -77,7 +77,7 @@ function formatTestCases(testCases) {
     text += `TC-${tc.id}: ${tc.title}\n`;
 
     tc.steps.forEach((step, i) => {
-      text += `   ${i + 1}. ${step}\n`;
+      text += `Steps:\n   ${i + 1}. ${step}\n`;
     });
 
     text += `Expected Result: ${tc.expectedResult}\n\n`;
