@@ -1,28 +1,34 @@
-const fetchStories = require("../services/fetchStories");
+const fetchStoriesService = require("../services/fetchStories");
 
 const fetchStoriesController = async (req, res) => {
   try {
-    const config = req.body;
+    const { accessToken, projectKey } = req.body;
 
-    if (!config) {
-      return res.status(400).json({
-        message: "Jira configuration is required",
-      });
+    if (!accessToken) {
+      return res.status(400).json({ message: "Access token required" });
     }
 
-    const stories = await fetchStories(config);
+    if (!projectKey) {
+      return res.status(400).json({ message: "Project key required" });
+    }
+
+    const { stories, acceptanceField, generatedTestCasesField } =
+      await fetchStoriesService({
+        accessToken,
+        projectKey,
+      });
 
     res.status(200).json({
       success: true,
       stories,
+      acceptanceField,
+      generatedTestCasesField,
     });
-  } catch (error) {
-    console.error("Fetch Stories Error:", error.message);
-
+  } catch (err) {
+    console.error("Fetch Stories Error:", err.message);
     res.status(500).json({
       success: false,
       message: "Failed to fetch stories",
-      error: error.message,
     });
   }
 };

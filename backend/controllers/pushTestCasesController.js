@@ -1,38 +1,22 @@
-const pushTestCases = require("../services/pushTestCases");
+const pushTestCasesService = require("../services/pushTestCases");
 
 const pushTestCasesController = async (req, res) => {
   try {
-    const { jiraConfig, testCases } = req.body;
+    const { accessToken, testCases, testCaseField } = req.body;
 
-    if (!jiraConfig) {
-      return res.status(400).json({
-        message: "Jira configuration required",
-      });
-    }
+    if (!accessToken)
+      return res.status(400).json({ message: "Access token required" });
 
-    if (!testCases || testCases.length === 0) {
-      return res.status(400).json({
-        message: "Test cases are required",
-      });
-    }
+    await pushTestCasesService({ accessToken, testCases, testCaseField });
 
-    await pushTestCases(jiraConfig, testCases);
-
-    res.status(200).json({
-      success: true,
-      message: "Test cases successfully pushed to Jira",
-    });
-  } catch (error) {
-    console.error(
-      "Push Test Cases Error:",
-      error.response?.data || error.message,
-    );
-
-    res.status(500).json({
-      success: false,
-      message: "Failed to push test cases",
-      error: error.message,
-    });
+    res
+      .status(200)
+      .json({ success: true, message: "Test cases pushed successfully" });
+  } catch (err) {
+    console.error("Push Test Cases Error:", err.message);
+    res
+      .status(500)
+      .json({ success: false, message: "Failed to push test cases" });
   }
 };
 
