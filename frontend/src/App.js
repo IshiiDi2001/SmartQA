@@ -170,7 +170,7 @@ function App() {
             </a>
 
             <div>
-              <p className="text-xs text-gray-400 mt-6">
+              <p className="text-xs text-gray-400 mb-6">
                 Note: Please Add Acceptance Criteria(with data) and Generated
                 Test Cases custom fields to your Jira project. You will be
                 redirected to Atlassian for authentication. We only request read

@@ -45,7 +45,7 @@ router.get("/callback", async (req, res) => {
 
     // Redirect to frontend with access token in URL
     res.redirect(
-      `https://smartqa-pe5h.onrender.com/?access_token=${access_token}`,
+      `https://smart-qa-a5yt.onrender.com?access_token=${access_token}`,
     );
   } catch (err) {
     console.error("OAuth callback error:", err.message);
