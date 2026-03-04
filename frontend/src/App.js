@@ -398,7 +398,7 @@ function App() {
           </div>
         )}
         {/* ================= DIVIDER ================= */}
-        <div className="border-t mt-14 mb-8"></div>
+        <div className="border-t mt-8 mb-8"></div>
 
         {/* ================= FEATURES ================= */}
         <div className="grid md:grid-cols-3 gap-10 text-left">
